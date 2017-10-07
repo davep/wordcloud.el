@@ -125,6 +125,14 @@ The list is sorted in descending frequency order."
         (lambda (word1 word2)
           (> (cdr word1) (cdr word2)))))
 
+(defun wordcloud-get-word-frequency-list-alpha ()
+  "Get the word count for the current buffer as a list.
+
+The list is sorted in alphabetic order."
+  (sort (wordcloud-get-word-frequency-list)
+        (lambda (word1 word2)
+          (string< (car word1) (car word2)))))
+
 (defun wordcloud-compress (words)
   "\"Compress\" the counts.
 
@@ -139,10 +147,12 @@ range."
               (cons (car word) (cons (cdr word) (/ (cdr word) dist))))
             words)))
 
-(defun wordcloud ()
+(defun wordcloud (by-frequency)
   "Show a word cloud for the current buffer."
-  (interactive)
-  (let ((words (wordcloud-get-word-frequency-list-descending)))
+  (interactive "P")
+  (let ((words (if by-frequency
+                   (wordcloud-get-word-frequency-list-descending)
+                 (wordcloud-get-word-frequency-list-alpha))))
     (with-help-window "*wordcloud*"
       (with-current-buffer standard-output
         (setq-local truncate-lines nil)
