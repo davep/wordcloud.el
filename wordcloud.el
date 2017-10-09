@@ -155,7 +155,7 @@ range."
                  (wordcloud-get-word-frequency-list-alpha))))
     (with-help-window "*wordcloud*"
       (with-current-buffer standard-output
-        (setq-local truncate-lines nil)
+        (visual-line-mode 1)
         (cl-loop for word in (wordcloud-compress words)
                  do (insert
                      (propertize (format "%s(%d) "
