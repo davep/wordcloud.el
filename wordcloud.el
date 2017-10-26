@@ -102,12 +102,18 @@ biggest)."
 biggest)."
   :group 'wordcloud)
 
+(defcustom wordcloud-min-word-length 4
+  "Minimum length of a word to include in the cloud."
+  :type 'integer
+  :group 'wordcloud)
+
 (defun wordcloud-get-word-frequency-hash ()
   "Get a hash of word frequency counts."
   (save-excursion
     (setf (point) (point-min))
     (cl-loop with words = (make-hash-table :test #'equal)
              while (re-search-forward "\\w+" nil t)
+             if (>= (length (match-string 0)) wordcloud-min-word-length)
              do (cl-incf (gethash (downcase (match-string 0)) words 0))
              finally return words)))
 
