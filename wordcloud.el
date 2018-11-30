@@ -1,5 +1,5 @@
 ;;; wordcloud.el --- Generate a word cloud -*- lexical-binding: t -*-
-;; Copyright 2017 by Dave Pearson <davep@davep.org>
+;; Copyright 2017-2018 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
 ;; Version: 1.00
@@ -102,6 +102,9 @@ biggest)."
 biggest)."
   :group 'wordcloud)
 
+(defconst wordcloud-length 10
+  "The length of the word cloud")
+
 (defcustom wordcloud-min-word-length 4
   "Minimum length of a word to include in the cloud."
   :type 'integer
@@ -148,9 +151,15 @@ range."
   (let* ((counts (mapcar #'cdr words))
          (min    (apply #'min counts))
          (max    (apply #'max counts))
-         (dist   (/ (- max min) (1- 10.0))))
+         (dist   (- max min)))
     (mapcar (lambda (word)
-              (cons (car word) (cons (cdr word) (/ (cdr word) dist))))
+              (cons
+               (car word)
+               (cons
+                (cdr word)
+                (if (zerop dist)
+                    (/ wordcloud-length 2)
+                  (* (/ (1- wordcloud-length) dist) (- (cdr word) min))))))
             words)))
 
 (defun wordcloud (by-frequency)
