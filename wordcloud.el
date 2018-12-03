@@ -2,7 +2,7 @@
 ;; Copyright 2017-2018 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.2
+;; Version: 1.3
 ;; Keywords: games
 ;; URL: https://github.com/davep/wordcloud.el
 ;; Package-Requires: ((cl-lib "0.5") (emacs "24.3"))
