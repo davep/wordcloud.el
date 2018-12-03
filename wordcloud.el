@@ -168,7 +168,10 @@ range."
 
 ;;;###autoload
 (defun wordcloud (by-frequency)
-  "Show a word cloud for the current buffer."
+  "Show a word cloud for the current buffer.
+
+If BY-FREQUENCY is non-nil the cloud is shown sorted by
+frequency, otherwise it's shown in alphabetical order."
   (interactive "P")
   (let ((words (if by-frequency
                    (wordcloud-get-word-frequency-list-descending)
