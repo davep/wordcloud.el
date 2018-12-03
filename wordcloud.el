@@ -103,7 +103,11 @@ biggest)."
   :group 'wordcloud)
 
 (defconst wordcloud-length 10
-  "The length of the word cloud")
+  "The length of the word cloud.
+
+This is the number of word sizes that are used in the cloud. Note
+that changing this will require that you add more
+`wordcloud-length-N' faces.")
 
 (defcustom wordcloud-min-word-length 4
   "Minimum length of a word to include in the cloud."
