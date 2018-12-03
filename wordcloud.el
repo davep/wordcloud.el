@@ -166,6 +166,7 @@ range."
                   (truncate (* (/ (1- wordcloud-length) dist) (- (cdr word) min)))))))
             words)))
 
+;;;###autoload
 (defun wordcloud (by-frequency)
   "Show a word cloud for the current buffer."
   (interactive "P")
