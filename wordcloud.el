@@ -5,7 +5,7 @@
 ;; Version: 1.3
 ;; Keywords: games
 ;; URL: https://github.com/davep/wordcloud.el
-;; Package-Requires: ((cl-lib "0.5") (emacs "24.3"))
+;; Package-Requires: ((emacs "24.3"))
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
@@ -26,11 +26,13 @@
 
 ;;; Code:
 
-(require 'cl-lib)
+(eval-when-compile
+  (require 'cl-lib))
 
 (defgroup wordcloud nil
   "Simple word cloud generator."
-  :group 'games)
+  :group 'games
+  :prefix "wordcloud-")
 
 (defface wordcloud-face-0
   '((t :height 0.9))
@@ -117,7 +119,7 @@ that changing this will require that you add more
 (defun wordcloud-get-word-frequency-hash ()
   "Get a hash of word frequency counts."
   (save-excursion
-    (setf (point) (point-min))
+    (goto-char (point-min))
     (cl-loop with words = (make-hash-table :test #'equal)
              while (re-search-forward "\\w+" nil t)
              if (>= (length (match-string 0)) wordcloud-min-word-length)
@@ -153,17 +155,19 @@ This makes a list of words, from WORDS, with their frequency and
 a value related to the frequency that is compressed into the font
 range."
   (let* ((counts (mapcar #'cdr words))
-         (min    (apply #'min counts))
-         (max    (apply #'max counts))
-         (dist   (* 1.0 (- max min))))
+         (min (apply #'min counts))
+         (max (apply #'max counts))
+         (log-min (log (max 1 min)))
+         (log-max (log (max 1 max)))
+         (log-dist (- log-max log-min)))
     (mapcar (lambda (word)
-              (cons
-               (car word)
-               (cons
-                (cdr word)
-                (if (zerop dist)
-                    (/ wordcloud-length 2)
-                  (truncate (* (/ (1- wordcloud-length) dist) (- (cdr word) min)))))))
+              (let* ((freq (cdr word))
+                     (log-freq (log (max 1 freq)))
+                     (size (if (zerop log-dist)
+                               (/ wordcloud-length 2)
+                             (truncate (* (/ (1- wordcloud-length) log-dist)
+                                          (- log-freq log-min))))))
+                (cons (car word) (cons freq size))))
             words)))
 
 ;;;###autoload
