@@ -111,6 +111,11 @@ This is the number of word sizes that are used in the cloud. Note
 that changing this will require that you add more
 `wordcloud-length-N' faces.")
 
+(defcustom wordcloud-ignore '("from" "that" "there" "this" "with")
+  "List of words to ignore in the cloud."
+  :type '(repeat string)
+  :group 'wordcloud)
+
 (defcustom wordcloud-min-word-length 4
   "Minimum length of a word to include in the cloud."
   :type 'integer
@@ -122,7 +127,9 @@ that changing this will require that you add more
     (goto-char (point-min))
     (cl-loop with words = (make-hash-table :test #'equal)
              while (re-search-forward "\\w+" nil t)
-             if (>= (length (match-string 0)) wordcloud-min-word-length)
+             if (and
+                 (>= (length (match-string 0)) wordcloud-min-word-length)
+                 (not (member (downcase (match-string 0)) wordcloud-ignore)))
              do (cl-incf (gethash (downcase (match-string 0)) words 0))
              finally return words)))
 
