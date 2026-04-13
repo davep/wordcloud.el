@@ -1,8 +1,8 @@
 ;;; wordcloud.el --- Generate a word cloud -*- lexical-binding: t -*-
-;; Copyright 2017-2018 by Dave Pearson <davep@davep.org>
+;; Copyright 2017-2026 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.3
+;; Version: 1.4
 ;; Keywords: games
 ;; URL: https://github.com/davep/wordcloud.el
 ;; Package-Requires: ((emacs "24.3"))
