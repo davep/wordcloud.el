@@ -26,7 +26,8 @@
 
 ;;; Code:
 
-(require 'cl-lib)
+(eval-when-compile
+  (require 'cl-lib))
 
 (defgroup wordcloud nil
   "Simple word cloud generator."
