@@ -30,7 +30,8 @@
 
 (defgroup wordcloud nil
   "Simple word cloud generator."
-  :group 'games)
+  :group 'games
+  :prefix "wordcloud-")
 
 (defface wordcloud-face-0
   '((t :height 0.9))
