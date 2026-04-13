@@ -36,72 +36,82 @@
 
 (defface wordcloud-face-0
   '((t :height 0.9))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defface wordcloud-face-1
   '((t :height 0.92))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defface wordcloud-face-2
   '((t :height 0.94))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defface wordcloud-face-3
   '((t :height 0.96))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defface wordcloud-face-4
   '((t :height 0.98))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defface wordcloud-face-5
   '((t :height 1.0))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defface wordcloud-face-6
   '((t :height 1.4))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defface wordcloud-face-7
   '((t :height 1.8))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defface wordcloud-face-8
   '((t :height 2.2))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defface wordcloud-face-9
   '((t :height 2.5))
-  "Face to use in the word cloud. Faces run from
-`wordcloud-face-0' (the smallest) to `wordcloud-face-9' (the
-biggest)."
+  "Face to use in the word cloud.
+
+Faces run from `wordcloud-face-0' (the smallest) to
+`wordcloud-face-9' (the biggest)."
   :group 'wordcloud)
 
 (defconst wordcloud-length 10
