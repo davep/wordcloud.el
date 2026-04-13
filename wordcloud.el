@@ -153,17 +153,19 @@ This makes a list of words, from WORDS, with their frequency and
 a value related to the frequency that is compressed into the font
 range."
   (let* ((counts (mapcar #'cdr words))
-         (min    (apply #'min counts))
-         (max    (apply #'max counts))
-         (dist   (* 1.0 (- max min))))
+         (min (apply #'min counts))
+         (max (apply #'max counts))
+         (log-min (log (max 1 min)))
+         (log-max (log (max 1 max)))
+         (log-dist (- log-max log-min)))
     (mapcar (lambda (word)
-              (cons
-               (car word)
-               (cons
-                (cdr word)
-                (if (zerop dist)
-                    (/ wordcloud-length 2)
-                  (truncate (* (/ (1- wordcloud-length) dist) (- (cdr word) min)))))))
+              (let* ((freq (cdr word))
+                     (log-freq (log (max 1 freq)))
+                     (size (if (zerop log-dist)
+                               (/ wordcloud-length 2)
+                             (truncate (* (/ (1- wordcloud-length) log-dist)
+                                          (- log-freq log-min))))))
+                (cons (car word) (cons freq size))))
             words)))
 
 ;;;###autoload
