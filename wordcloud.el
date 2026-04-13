@@ -117,7 +117,7 @@ that changing this will require that you add more
 (defun wordcloud-get-word-frequency-hash ()
   "Get a hash of word frequency counts."
   (save-excursion
-    (setf (point) (point-min))
+    (goto-char (point-min))
     (cl-loop with words = (make-hash-table :test #'equal)
              while (re-search-forward "\\w+" nil t)
              if (>= (length (match-string 0)) wordcloud-min-word-length)
