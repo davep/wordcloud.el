@@ -202,10 +202,11 @@ frequency, otherwise it's shown in alphabetical order."
         (visual-line-mode 1)
         (cl-loop for word in (wordcloud-compress words)
                  do (insert
-                     (propertize (format "%s(%d) "
+                     (propertize (format "%s(%d)"
                                          (car word)
                                          (cadr word))
-                                 'font-lock-face (intern (format "wordcloud-face-%d" (cddr word))))))))))
+                                 'font-lock-face (intern (format "wordcloud-face-%d" (cddr word))))
+                     " "))))))
 
 (provide 'wordcloud)
 
